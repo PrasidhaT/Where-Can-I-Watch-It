@@ -54,10 +54,23 @@ function getMovies(searchText){
                   var movieName = data.results[x].name;
                   var moviePosterUrl = data.results[x].picture;
 
+                  //THIS IS THE CARD LAYOUT BEING DISPLAYED:
+                  // <div class="card" style="width: 20rem;">
+                  //   <img class="card-img-top" src="..." alt="Card image cap">
+                  //   <div class="card-block">
+                  //     <h4 class="card-title">Card title</h4>
+                  //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  //     <a href="#" class="btn btn-primary">Go somewhere</a>
+                  //   </div>
+                  // </div>
+
                   //START output card div
                   //example just the <h1>
                   output += `
-                  <h1>
+                  <div class="card" style="width: 20rem;">
+                  <img class="card-img-top" src="${data.results[x].picture}" alt="Card image cap">
+                  <div class="card-block">
+                  <h4 class="card-title">${data.results[x].name}</h4>
                   `;
 
                   //This section goes though and gets all the different links to watch the movie
@@ -74,28 +87,52 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      1
+                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
                       `;
                     }
                     if (location == "Netflix") {
                       console.log("NETFLIX");
                       //The reason for the substring is because for netflix the link starts with nflx://   example: nflx://www.netflix.com/title/80088567
                       console.log(locationUrl.substring(7));
+                      var netflixLink = locationUrl.substring(7);
                       output += `
-                      0
+                      <br>
                       `;
+                      output += `
+                      <a href="https://${netflixLink}" class="btn btn-primary">Watch On ${location}</a>
+                      `;
+                      //The reason for the https:// is because we remove the first few letters from the link, and now need to add the https cus other links have it but for some reason netflix doesnt.
+                      //api issue
                     }
                     if (location == "Amazon Instant") {
                       console.log("AMAZON INSTANT");
                       console.log(locationUrl);
+                      output += `
+                      <br>
+                      `;
+                      output += `
+                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      `;
                     }
                     if (location == "Amazon Prime") {
                       console.log("AMAZON PRIME");
                       console.log(locationUrl);
+                      output += `
+                      <br>
+                      `;
+                      output += `
+                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      `;
                     }
                     if (location == "Google Play") {
                       console.log("Google Play");
                       console.log(locationUrl);
+                      output += `
+                      <br>
+                      `;
+                      output += `
+                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      `;
                     }
 
                   }
@@ -103,7 +140,8 @@ function getMovies(searchText){
                   //ENDS the output, so all the </div> n such.
                   //example the </h1>
                   output += `
-                  </h1>
+                    </div>
+                  </div>
                   `;
 
               }
