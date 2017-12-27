@@ -55,22 +55,24 @@ function getMovies(searchText){
                   var moviePosterUrl = data.results[x].picture;
 
                   //THIS IS THE CARD LAYOUT BEING DISPLAYED:
-                  // <div class="card" style="width: 20rem;">
-                  //   <img class="card-img-top" src="..." alt="Card image cap">
-                  //   <div class="card-block">
-                  //     <h4 class="card-title">Card title</h4>
-                  //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  //     <a href="#" class="btn btn-primary">Go somewhere</a>
+                  // <div class="card">
+                  //   <img class="card-img-top" src="https://utellyassets2-9.imgix.net/2/Open/CW_25/Program/23799180/_2by1/FLASH_S3_H_DD_KA_TT_3415x1920_300dpif.jpg?fit=crop&auto=compress&crop=faces,top" alt="Card image">
+                  //   <div class="card-body">
+                  //     <h4 class="card-title">John Doe</h4>
+                  //     <a href="#" class="btn btn-primary">See Profile</a>
+                  //     <a href="#" class="btn btn-primary">See Profile</a>
+                  //     <a href="#" class="btn btn-primary">See Profile</a>
+                  //     <a href="#" class="btn btn-primary">See Profile</a>
                   //   </div>
                   // </div>
 
                   //START output card div
                   //example just the <h1>
                   output += `
-                  <div class="card" style="width: 20rem;">
-                  <img class="card-img-top" src="${data.results[x].picture}" alt="Card image cap">
-                  <div class="card-block">
-                  <h4 class="card-title">${data.results[x].name}</h4>
+                  <div class="card">
+                    <img class="card-img-top" src="${data.results[x].picture}" alt="Card image">
+                    <div class="card-body">
+                      <h4 class="card-title">${data.results[x].name}</h4>
                   `;
 
                   //This section goes though and gets all the different links to watch the movie
@@ -134,14 +136,24 @@ function getMovies(searchText){
                       <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
                       `;
                     }
+                    if (location == "Hulu") {
+                      console.log("Hulu");
+                      console.log(locationUrl);
+                      output += `
+                      <br>
+                      `;
+                      output += `
+                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      `;
+                    }
 
                   }
 
                   //ENDS the output, so all the </div> n such.
                   //example the </h1>
                   output += `
-                    </div>
                   </div>
+                </div>
                   `;
 
               }
