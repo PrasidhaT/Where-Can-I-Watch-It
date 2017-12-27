@@ -82,6 +82,7 @@ function getMovies(searchText){
                   for (var i = 0; i < data.results[x].locations.length; i++) {
                     var location = data.results[x].locations[i].display_name
                     var locationUrl = data.results[x].locations[i].url
+                    var locationIcon = data.results[x].locations[i].icon
                     if (location == "iTunes") {
                       console.log("ITUNES");
                       console.log(locationUrl);
@@ -89,7 +90,7 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      <a href="${locationUrl}" class="btn btn-primary"><img src="${locationIcon}" alt="Watch on Itunes" style="max-height:30px;"></a>
                       `;
                     }
                     if (location == "Netflix") {
@@ -101,7 +102,7 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      <a href="https://${netflixLink}" class="btn btn-primary">Watch On ${location}</a>
+                      <a href="https://${netflixLink}" class="btn btn-primary"><img src="${locationIcon}" alt="Watch on Netflix" style="max-height:30px;"></a>
                       `;
                       //The reason for the https:// is because we remove the first few letters from the link, and now need to add the https cus other links have it but for some reason netflix doesnt.
                       //api issue
@@ -113,7 +114,7 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      <a href="${locationUrl}" class="btn btn-primary"><img src="${locationIcon}" alt="Watch on Amazon Instant" style="max-height:30px;"></a>
                       `;
                     }
                     if (location == "Amazon Prime") {
@@ -123,7 +124,7 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      <a href="${locationUrl}" class="btn btn-primary"><img src="${locationIcon}" alt="Watch on Amazon Prime" style="max-height:30px;"></a>
                       `;
                     }
                     if (location == "Google Play") {
@@ -133,7 +134,7 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      <a href="${locationUrl}" class="btn btn-primary"><img src="${locationIcon}" alt="Watch on Google Play" style="max-height:30px;"></a>
                       `;
                     }
                     if (location == "Hulu") {
@@ -143,7 +144,7 @@ function getMovies(searchText){
                       <br>
                       `;
                       output += `
-                      <a href="${locationUrl}" class="btn btn-primary">Watch On ${location}</a>
+                      <a href="${locationUrl}" class="btn btn-primary"><img src="${locationIcon}" alt="Watch on Hulu" style="max-height:30px;"></a>
                       `;
                     }
 
